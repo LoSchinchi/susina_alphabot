@@ -1,0 +1,30 @@
+import AlphaBot as ab
+import socket as sck
+from threading import Thread
+from time import sleep
+
+SEP = ';'
+
+susina = ab.AlphaBot()
+
+socket = sck.socket(sck.AF_INET, sck.SOCK_STREAM)
+socket.bind(('0.0.0.0', 8880))
+
+socket.listen()
+conn, addr = socket.accept()
+
+move = {'f': susina.forward, 'b': susina.backward, 'r': susina.right, 'l': susina.left}
+
+while True:
+    data = conn.recv(4096).decode()
+    if SEP not in data:
+        conn.sendall(f'il messaggio inviato deve contenere il carattere separatore {SEP}'.encode())
+        continue
+
+    datas = data.split(';')
+    if datas[0].lower() in move:
+        move[datas[0].lower()]()
+        sleep(float(datas[1]))
+        susina.stop()
+    else:
+        conn.sendall(f"il primo parametro passato deve essere uno tra {'-'.join(list(move.keys()))}".encode())
