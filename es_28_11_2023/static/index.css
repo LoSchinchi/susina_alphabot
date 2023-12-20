@@ -1,0 +1,37 @@
+#buttons-move {
+    display: flex;
+    align-items: start;
+    justify-content: left;
+    gap: 15px;
+    flex-direction: column;
+}
+
+#buttons-move > div {
+    display: flex;
+    gap: 15px;
+}
+
+#buttons-move button {
+    width: 100px;
+    height: 100px;
+    padding: 0;
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid rgb(214, 214, 214);
+    border-radius: 5px;
+    transition: all 200ms ease;
+}
+
+#buttons-move button:hover {
+    background-color: rgb(228, 228, 228);
+}
+
+#buttons-move > div > div {
+    width: 100px;
+    height: 100px;
+}
+
+#buttons-move img {
+    width: 50px;
+    height: 50px;
+}
