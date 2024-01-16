@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Susina time</title>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="/static/index.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+</head>
+<body>
+    {% if commands != [] %}
+        <div>
+            <form method="post" action="/move" id="form-select">
+                <p id="tit-shortcut">Shortcuts</h1>
+                <select class="form-select" name="command" onchange="send()">
+                    {% for com in commands %}
+                        <option>{{com[1]}}</option>
+                    {% endfor %}
+                </select>
+                <button style="display: none;" id="invio-shortcut" type="submit">INVIO</button>
+            </form>
+        </div>
+    {% endif %}
+
+    <form method="post" id="buttons-move" action="/move">
+        <div>
+            <div></div>
+            <button type="submit" name="command" value="f">
+                <img src="/static/k_up.png">
+            </button>
+        </div>
+        <div>
+            <button type="submit" name="command" value="l">
+                <img src="/static/k_left.png">
+            </button>
+            <button type="submit" name="command" value="b">
+                <img src="/static/k_down.png">
+            </button>
+            <button type="submit" name="command" value="r">
+                <img src="/static/k_right.png">
+            </button>
+        </div>
+    </div>
+</body>
+
+<script>
+    let btn = document.getElementById('invio-shortcut');
+    function send() {
+        btn.click();
+    }
+</script>
+</html>

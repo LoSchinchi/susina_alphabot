@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+
+    <script src="/static/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div id="card">
+        <form method="post" action="/login">
+            <div class="form-floating mb-3">
+                <input name="Username" type="text" class="form-control" id="floatingInput" placeholder="">
+                <label for="floatingInput">Nome Utente</label>
+            </div>
+            <div class="form-floating">
+                <input name="Psw" type="password" class="form-control" id="floatingPassword" placeholder="">
+                <label for="floatingPassword">Password</label>
+            </div>
+
+            {% if error %}
+                <p id="error">L'username o la password sono incorretti.</p>
+            {% endif %}
+            <button type="submit" class="myButton">Login</button>
+        </form>
+    </div>
+</body>
+</html>

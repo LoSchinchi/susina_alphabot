@@ -70,7 +70,7 @@ def move():
             return redirect(url_for('secret'))
 
     moves[request.form.get('command')]()
-    sleep(1)
+    sleep(0.5)
     susina.stop()
 
     secretNum = randint(0, 1234567890)
